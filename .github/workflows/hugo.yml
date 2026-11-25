@@ -1,0 +1,57 @@
+# 每次推送到 main 分支，GitHub 会自动构建博客并发布到 GitHub Pages
+name: 部署博客到 GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:   # 也可以在 Actions 页面手动触发
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+    steps:
+      - name: 拉取代码（包括主题）
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: 安装 Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.163.2"
+          extended: true
+
+      - name: 配置 Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: 构建网站
+        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: 上传构建结果
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 发布
+        id: deployment
+        uses: actions/deploy-pages@v4
