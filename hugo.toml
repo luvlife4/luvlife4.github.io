@@ -5,7 +5,7 @@
 # 部署到 GitHub Pages 时，构建流程会自动填入正确的地址，这里不用改
 baseURL = "https://example.github.io/"
 
-title = "我的技术博客"            # 改这里：博客名称
+title = "虽然没人看但是我就随便写写的博客"            # 改这里：博客名称
 theme = "PaperMod"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh"
@@ -27,8 +27,8 @@ enableEmoji = true
 # ------------------------------------------------------------
 [params]
   env = "production"
-  description = "记录技术学习与踩坑笔记"   # 改这里：一句话简介
-  author = "你的名字"                      # 改这里
+  description = "主要领域覆盖深度学习，具身智能等"   # 改这里：一句话简介
+  author = "alex"                      # 改这里
   defaultTheme = "auto"                    # 跟随系统深色/浅色模式
   DateFormat = "2006-01-02"
 
@@ -46,12 +46,12 @@ enableEmoji = true
   ShowRssButtonInSectionTermList = true
 
   [params.homeInfoParams]
-    Title = "你好 👋"
-    Content = "这里记录我的技术学习、项目经验和踩过的坑。"   # 改这里：首页欢迎语
+    Title = "my blog"
+    Content = "你好，希望我的一些笔记能够对你有所帮助。"   # 改这里：首页欢迎语
 
   [[params.socialIcons]]
     name = "github"
-    url = "https://github.com/你的用户名"   # 改这里
+    url = "https://github.com/luvlife4"   # 改这里
 
   [[params.socialIcons]]
     name = "rss"
