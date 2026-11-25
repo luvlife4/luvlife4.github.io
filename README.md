@@ -57,6 +57,14 @@ hugo new content posts/redis-cache-notes.md
 2. 把 `draft: true` 改成 `draft: false`（`true` 是草稿，不会发布）
 3. 在下面用 Markdown 写正文
 
+写论文笔记时放到「论文阅读」分区：
+
+```bash
+hugo new content papers/nested-learning-notes.md
+```
+
+会自动套用 `archetypes/papers.md` 里的论文笔记模板。
+
 写完：
 
 ```bash
@@ -67,7 +75,7 @@ git push
 
 一两分钟后线上就更新了。
 
-> 不想装 Hugo 的话，直接复制一份 `content/posts/hello-world.md` 改内容也完全可以，甚至可以在 GitHub 网页上直接新建文件。
+> 不想装 Hugo 的话，直接复制一份 `content/papers/nested-learning.md` 的头部信息改内容也完全可以，甚至可以在 GitHub 网页上直接新建文件。
 
 ### 插入图片
 
@@ -108,12 +116,14 @@ hugo server -D
 
 ```
 hugo.toml                  博客配置（标题、菜单、主题参数）
-content/posts/             文章都放这里
+content/papers/            「论文阅读」分区（论文精读笔记）
+content/posts/             其他文章放这里
 content/about.md           「关于」页面
 content/archives.md        「归档」页面（不用改）
 content/search.md          「搜索」页面（不用改）
 static/                    图片等静态文件
-archetypes/default.md      新建文章时使用的模板
+archetypes/default.md      新建普通文章时使用的模板
+archetypes/papers.md       新建论文笔记时使用的模板
 themes/PaperMod/           主题（git submodule，不要直接改）
 .github/workflows/hugo.yml 自动部署流程
 ```

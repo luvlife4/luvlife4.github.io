@@ -32,6 +32,9 @@ enableEmoji = true
   defaultTheme = "auto"                    # 跟随系统深色/浅色模式
   DateFormat = "2006-01-02"
 
+  # 首页显示哪些分区的文章（papers = 论文阅读，posts = 普通文章）
+  mainSections = ["papers", "posts"]
+
   ShowReadingTime = true
   ShowWordCount = true
   ShowPostNavLinks = true          # 文章底部「上一篇/下一篇」
@@ -68,6 +71,11 @@ enableEmoji = true
 # 顶部菜单
 # ------------------------------------------------------------
 [menu]
+  [[menu.main]]
+    identifier = "papers"
+    name = "论文阅读"
+    url = "/papers/"
+    weight = 5
   [[menu.main]]
     identifier = "archives"
     name = "归档"
